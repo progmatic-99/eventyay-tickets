@@ -2,12 +2,12 @@ name: Tests
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, development ]
     paths-ignore:
       - 'doc/**'
       - 'src/pretix/locale/**'
   pull_request:
-    branches: [ master ]
+    branches: [ master, development ]
     paths-ignore:
       - 'doc/**'
       - 'src/pretix/locale/**'

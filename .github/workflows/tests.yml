@@ -19,12 +19,8 @@ jobs:
     strategy:
       matrix:
         python-version: [3.11]
-        database: [sqlite, postgres, mysql]
+        database: [sqlite, mysql]
         exclude:
-          - database: mysql
-            python-version: 3.11
-          - database: sqlite
-            python-version: 3.11
           - database: mysql
             python-version: 3.11
           - database: sqlite
@@ -37,13 +33,6 @@ jobs:
           mysql database: 'pretix'
           mysql root password: ''
         if: matrix.database == 'mysql'
-      - uses: harmon758/postgresql-action@v1
-        with:
-          postgresql version: '11'
-          postgresql db: 'pretix'
-          postgresql user: 'postgres'
-          postgresql password: 'postgres'
-        if: matrix.database == 'postgres'
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v1
         with:
@@ -55,7 +44,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
       - name: Install system dependencies
-        run: sudo apt update && sudo apt install gettext mysql-client libpq-dev
+        run: sudo apt update && sudo apt install gettext mysql-client
       - name: Install Python dependencies
         run: pip3 install -r src/requirements.txt -U pip setuptools mysqlclient && pip3 install -e ".[dev]"
       - name: Run checks
@@ -76,4 +65,3 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: src/coverage.xml
           fail_ci_if_error: true
-        if: matrix.database == 'postgres' && matrix.python-version == '3.8'

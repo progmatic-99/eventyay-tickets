@@ -46,7 +46,7 @@ jobs:
       - name: Install system dependencies
         run: sudo apt update && sudo apt install gettext mysql-client
       - name: Install Python dependencies
-        run: pip3 install -r src/requirements.txt -U pip setuptools mysqlclient && pip3 install -e ".[dev]"
+        run: pip3 install -r requirements.txt -U pip setuptools mysqlclient && pip3 install -e ".[dev]"
         working-directory: ./src
       - name: Run checks
         run: python manage.py check

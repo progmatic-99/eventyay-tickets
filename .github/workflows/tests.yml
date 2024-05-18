@@ -51,9 +51,6 @@ jobs:
       - name: Install JS dependencies
         working-directory: ./src
         run: make npminstall
-      - name: Compile
-        working-directory: ./src
-        run: make all compress
       - name: Run tests
         working-directory: ./src
         run: PRETIX_CONFIG_FILE=tests/travis_${{ matrix.database }}.cfg py.test -n 3 -p no:sugar --cov=./ --cov-report=xml --reruns 3 tests --maxfail=100

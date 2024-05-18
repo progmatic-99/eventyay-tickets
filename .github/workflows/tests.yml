@@ -55,9 +55,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
       - name: Install system dependencies
-        run: sudo apt update && sudo apt install gettext mysql-client
+        run: sudo apt update && sudo apt install gettext mysql-client libpq-dev
       - name: Install Python dependencies
-        run: pip3 install -r src/requirements.txt -U pip setuptools mysqlclient --no-cache-dir && pip3 install -e ".[dev]"
+        run: pip3 install -r src/requirements.txt -U pip setuptools mysqlclient && pip3 install -e ".[dev]"
       - name: Run checks
         run: python manage.py check
         working-directory: ./src

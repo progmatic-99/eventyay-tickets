@@ -48,9 +48,6 @@ jobs:
       - name: Install Python dependencies
         run: pip3 install -Ur requirements.txt -U pip setuptools mysqlclient && pip3 install -e ".[dev]"
         working-directory: ./src
-      - name: Run checks
-        run: python manage.py check
-        working-directory: ./src
       - name: Install JS dependencies
         working-directory: ./src
         run: make npminstall

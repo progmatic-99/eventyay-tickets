@@ -53,7 +53,7 @@ jobs:
         run: make npminstall
       - name: Run tests
         working-directory: ./src
-        run: PRETIX_CONFIG_FILE=tests/travis_${{ matrix.database }}.cfg py.test -n 3 -p no:sugar --cov=./ --cov-report=xml --reruns 3 tests --maxfail=100
+        run: PRETIX_CONFIG_FILE=tests/travis_mysql.cfg py.test -n 3 -p no:sugar --cov=./ --cov-report=xml --reruns 3 tests --maxfail=100
       - name: Upload coverage
         uses: codecov/codecov-action@v4.0.1
         with:

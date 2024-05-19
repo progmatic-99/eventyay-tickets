@@ -132,7 +132,6 @@ setup(
         'libsass==0.20.*',
         'django-otp==0.7.*,>=0.7.5',
         'webauthn==0.4.*',
-        'python-u2flib-server==4.*',
         'django-formtools==2.2',
         'celery==4.4.*',
         'kombu==4.6.*',

@@ -48,9 +48,9 @@ jobs:
       - name: Install system dependencies
         run: sudo apt update && sudo apt install gettext mysql-client
       - name: Install Python dependencies
-        run: pip3 install -r src/requirements.txt -Ur src/requirements/dev.txt mysqlclient psycopg2-binary
+        run: pip3 install -Ur src/requirements.txt -Ur src/requirements/dev.txt mysqlclient psycopg2-binary
       - name: Run checks
-        run: python manage.py check
+        run: python3 manage.py check
         working-directory: ./src
       - name: Install JS dependencies
         working-directory: ./src

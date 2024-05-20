@@ -48,11 +48,16 @@ jobs:
       - name: Install system dependencies
         run: sudo apt update && sudo apt install gettext mysql-client
       - name: Install Python dependencies
-        run: pip3 install -Ur requirements.txt -Ur requirements/dev.txt pip mysqlclient psycopg2-binary
+        run: pip3 install -Ur requirements.txt -Ur requirements/dev.txt pip mysqlclient
+      - name: Run checks
+        run: python manage.py check
         working-directory: ./src
       - name: Install JS dependencies
         working-directory: ./src
         run: make npminstall
+      - name: Compile
+        working-directory: ./src
+        run: make all compress
       - name: Run tests
         working-directory: ./src
         run: PRETIX_CONFIG_FILE=tests/travis_${{ matrix.database }}.cfg py.test -n 3 -p no:sugar --cov=./ --cov-report=xml --reruns 3 tests --maxfail=100

@@ -38,5 +38,5 @@ jobs:
         run: make spelling
         working-directory: ./doc
       - name:
-        run: '[ ! -s _build/spelling/output.txt ]'
+        run: cat _build/spelling/output.txt
         working-directory: ./doc

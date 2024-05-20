@@ -70,3 +70,4 @@ text-unidecode==1.*
 protobuf==3.13.*
 cryptography>=3.4.2
 sepaxml==2.4.*,>=2.4.1
+python-u2flib-server==4.*

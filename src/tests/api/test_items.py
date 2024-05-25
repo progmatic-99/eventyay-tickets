@@ -707,7 +707,7 @@ def test_item_create_with_addon(token_client, organizer, event, item, category, 
             "addons": [
                 {
                     "addon_category": category.pk,
-                    "min_count": -1,
+                    "min_count": 0,
                     "max_count": 10,
                     "position": 0,
                     "multi_allowed": False,

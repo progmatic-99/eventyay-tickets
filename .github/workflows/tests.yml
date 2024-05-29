@@ -73,7 +73,7 @@ jobs:
           file: src/coverage.xml
         if: matrix.database == 'postgres' && matrix.python-version == '3.8'
       - name: Upload test results to Codecov
-      	if: ${{ !cancelled() }}
         uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+      	if: !cancelled()

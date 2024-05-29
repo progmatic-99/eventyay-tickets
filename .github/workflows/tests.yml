@@ -30,7 +30,7 @@ jobs:
         if: matrix.database == 'mysql'
       - uses: harmon758/postgresql-action@v1
         with:
-          postgresql version: '11'
+          postgresql version: '12'
           postgresql db: 'pretix'
           postgresql user: 'postgres'
           postgresql password: 'postgres'
@@ -66,7 +66,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: src/coverage.xml
-        if: matrix.database == 'postgres' && matrix.python-version == '3.8'
+        if: matrix.database == 'postgres'
       - name: Upload test results to Codecov
         uses: codecov/test-results-action@v1
         with:

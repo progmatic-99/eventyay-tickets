@@ -21,13 +21,6 @@ jobs:
         python-version: [3.8]
         database: [postgres]
     steps:
-      - uses: actions/checkout@v2
-      - uses: getong/mariadb-action@v1.1
-        with:
-          mariadb version: '10.4'
-          mysql database: 'pretix'
-          mysql root password: ''
-        if: matrix.database == 'mysql'
       - uses: harmon758/postgresql-action@v1
         with:
           postgresql version: '12'
